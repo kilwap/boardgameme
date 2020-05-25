@@ -1,0 +1,78 @@
+{% extends 'gamelist/base.html' %}
+
+{% block content %}
+	<h1>This is GameList Page!</h1>
+	<a href="{% url 'updatedb' %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">update list</a>
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<td><center><h4>ID</h4></center></td>
+				<td><center><h4>Game title</h4></center></td>
+				<td><center><h4>Description</h4></center></td>
+				<td><center><h4>Players</h4></center></td>
+				<td><center><h4>
+					<div class="dropdown">
+						<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Age limit
+						</button>
+						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+							{% for age in all_age %}
+								<a class="dropdown-item" href="#">{{ age }}</a>
+							{% endfor %}
+						</div>
+					</div>
+				</center></td>
+				<td><center>
+					<div class="dropdown">
+						<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Published
+						</button>
+						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+							{% for year in all_year %}
+								<a class="dropdown-item" href="#">{{ year }}</a>
+							{% endfor %}
+						</div>
+					</div>
+				</center></td>
+				<td><center>
+					<div class="dropdown">
+						<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Cetegory
+						</button>
+						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+							{% for category in all_cat %}
+								<a class="dropdown-item" href="#">{{ category }}</a>
+							{% endfor %}
+						</div>
+					</div>
+				</center></td>
+				<td><center>
+					<div class="dropdown">
+						<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Publisher
+						</button>
+						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+							{% for publisher in all_pub %}
+								<a class="dropdown-item" href="#">{{ publisher }}</a>
+							{% endfor %}
+						</div>
+					</div>
+				</center></td>
+			</tr>
+		</thead>
+		<tbody>	
+			{% for game in all_games %}		
+			<tr>
+				<td><center><a>{{ game.game_id }}</a></center></td>
+				<td><center><a>{{ game.title }}</a></center></td>
+				<td><center><a>{{ game.description }}</a></center></td>
+				<td><center><a>{{ game.min_players }}-{{ game.max_players }}</a></center></td>
+				<td><center><a>{{ game.age }}</a></center></td>
+				<td><center><a>{{ game.pub_year }}</a></center></td>
+				<td><center><a>{{ game.category }}</a></center></td>
+				<td><center><a>{{ game.publisher }}</a></center></td>
+			</tr>
+			{% endfor %}
+		</tbody>	
+	</table>
+{% endblock %}

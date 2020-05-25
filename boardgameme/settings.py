@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'gamelist',
 ]
 
 MIDDLEWARE = [
@@ -78,7 +79,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'boardgameme',
         'USER': 'postgres',
-        'PASSWORD': 'KeRtOiP94',
+        'PASSWORD': '',
         'HOST': 'localhost',
         'PORT': '',
     }
